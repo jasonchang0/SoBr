@@ -3,20 +3,21 @@ from shutil import move, copy
 import random
 
 # need to update for different filetypes
-def rename_files(directory, filetype):
+def rename_files(directory):
     try:
         chdir('../data/' + directory)
     except FileExistsError as e:
         print(e)
 
     for filename in listdir('.'):
-
-        # Find name (img#) and set it as the name of the file
         file = filename.split('_')
         for part in file:
+            # image name/number
             if 'img' in part: 
                 name = part
-                break
+            # file extension
+            elif '.' in part:
+                filetype = part
  
         # add exception handling 
         if filename.endswith('_UL' + filetype):
@@ -45,12 +46,13 @@ def move_files(directory):
         print(e)
 
     for filename in listdir('.'):
-        
+        # 0 or 1 glasses of wine => sober
         if filename.startswith('0') or filename.startswith('1'):
             try:
                 move('./' + filename, '../negatives/' + filename)
             except FileNotFoundError as e:
                 print(e)
+        # else 2 or 3 glasses of wine => drunk
         else:
             try:
                 move('./' + filename, '../positives/' + filename)
@@ -90,12 +92,6 @@ def extract_random_samples(directory, num_samples):
 
 
 if __name__ == '__main__':
-    dir = input("Enter repository name: ")
-    filetypes = ['.png', '.jpeg', '.jpg']
-
-    for type in filetypes:
-        rename_files(dir, type)
-
+    rename_files('')
     # move_files(dir)
     extract_random_samples('negatives', 100)
-
