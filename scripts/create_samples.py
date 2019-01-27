@@ -23,6 +23,7 @@ arithmetic = {'add-45': iaa.Add(value=-45),
               'mulp-': iaa.Multiply(mul=0.50, per_channel=True), 'mulp+': iaa.Multiply(mul=1.50, per_channel=True),
               'jpeg': iaa.JpegCompression(compression=62), 'jpeg+': iaa.JpegCompression(compression=75),
               'jpeg++': iaa.JpegCompression(compression=87)}
+
 blur = {'GBlur': iaa.GaussianBlur(sigma=1.00),
         'ABlur': iaa.AverageBlur(k=3), 'MBlur': iaa.MedianBlur(k=3),
         'BBlur': iaa.BilateralBlur(sigma_color=250, sigma_space=250, d=5),
