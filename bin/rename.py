@@ -9,6 +9,8 @@ def rename_files(directory):
     except FileExistsError as e:
         print(e)
 
+    count = 0
+
     for filename in listdir('.'):
         file = filename.split('_')
         for part in file:
@@ -20,17 +22,23 @@ def rename_files(directory):
                 filetype = part
  
         # add exception handling 
-        if filename.endswith('_UL' + filetype):
-            rename(filename, '0_' + name + filetype)
+        if '_UL' in filename:
+            rename(filename, '0_' + name + str(count) + filetype)
+            count = count + 1
 
-        elif filename.endswith('_LL' + filetype):
-            rename(filename, '1_' + name + filetype)
+        elif '_LL' in filename:
+            rename(filename, '1_' + name + str(count) + filetype)
+            count = count + 1
 
-        elif filename.endswith('_UR' + filetype):
-            rename(filename, '2_' + name + filetype)
+        elif '_UR' in filename:
+            rename(filename, '2_' + name + str(count) + filetype)
+            count = count + 1
 
-        elif filename.endswith('_LR' + filetype):
-            rename(filename, '3_' + name + filetype)
+        elif '_LR' in filename:
+            rename(filename, '3_' + name + str(count) + filetype)
+            count = count + 1
+    
+    print(str(count) + ' files converted.')
 
     try:
         chdir('../../bin/')
@@ -67,31 +75,45 @@ def move_files(directory):
 
 # move a random subset of images. puts extracted samples in new_directory
 def extract_random_samples(directory, num_samples):
+    chdir('../data/')
     try:
-        chdir('../data/')
         mkdir('new_' + directory)
-        chdir(directory)
     except FileExistsError as e:
         print(e)
+    
+    chdir(directory)
 
     count = 0
 
     for filename in listdir('.'):
-        if random.randint(0, 100) < 50 and num_samples > 0:
-            copy('./' + filename, '../new_' + directory + '/' + filename)
-            num_samples = num_samples - 1
+        if random.randint(0, 100) < 50 and count < num_samples:
+            print('copy ./' + filename + ' to ' + '../new_' + directory + '/' + filename)
+            try:
+                copy('./' + filename, '../../new_' + directory + '/' + filename)
+            except IsADirectoryError:
+                print('Directory ' + str(directory) + ' does not exist')
+                continue
+            except FileExistsError:
+                print('File ' + filename + ' does not exist')
+                continue
+            except FileNotFoundError as e:
+                # print('File ' + filename + ' not found')
+                # print(e)
+                continue
+
             count = count + 1 
 
     print(str(count) + ' files were transferred over to new_' + directory)
-
     try:
-        chdir('../../bin/')
-    except FileExistsError as e:
-        print(e)
+        chdir('../../../bin/')
+    except:
+        print('Incorrect bin')
 
 
 
 if __name__ == '__main__':
-    rename_files('')
+    dir = input('Enter repository name: ')
+    # rename_files(dir)
     # move_files(dir)
-    extract_random_samples('negatives', 100)
+    # extract_random_samples('negatives/resize', 2500)
+    # extract_random_samples('positives/resize', 2500)
