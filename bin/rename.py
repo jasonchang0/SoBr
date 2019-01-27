@@ -2,8 +2,12 @@ from os import rename, listdir, chdir, mkdir
 from shutil import move, copy
 import random
 
+# need to update for different filetypes
 def rename_files(directory, filetype):
-    chdir('../data/' + directory)
+    try:
+        chdir('../data/' + directory)
+    except FileExistsError as e:
+        print(e)
 
     for filename in listdir('.'):
 
@@ -27,12 +31,18 @@ def rename_files(directory, filetype):
         elif filename.endswith('_LR' + filetype):
             rename(filename, '3_' + name + filetype)
 
-    chdir('../../bin/')
+    try:
+        chdir('../../bin/')
+    except FileExistsError as e:
+        print(e)
 
 
 # move files from the new directory to either positive or negative
 def move_files(directory):
-    chdir('../data/' + directory)
+    try:
+        chdir('../data/' + directory)
+    except FileExistsError as e:
+        print(e)
 
     for filename in listdir('.'):
         
@@ -46,19 +56,22 @@ def move_files(directory):
                 move('./' + filename, '../positives/' + filename)
             except FileNotFoundError as e:
                 print(e)
-
-    chdir('../../bin/')
+    
+    try:
+        chdir('../../bin/')
+    except FileExistsError as e:
+        print(e)
 
 
 # move a random subset of images. puts extracted samples in new_directory
 def extract_random_samples(directory, num_samples):
-    chdir('../data/')
     try:
+        chdir('../data/')
         mkdir('new_' + directory)
+        chdir(directory)
     except FileExistsError as e:
         print(e)
 
-    chdir(directory)
     count = 0
 
     for filename in listdir('.'):
@@ -68,14 +81,21 @@ def extract_random_samples(directory, num_samples):
             count = count + 1 
 
     print(str(count) + ' files were transferred over to new_' + directory)
-    chdir('../../bin/')
+
+    try:
+        chdir('../../bin/')
+    except FileExistsError as e:
+        print(e)
+
 
 
 if __name__ == '__main__':
     dir = input("Enter repository name: ")
-    filetype = input("Enter file type (png, jpeg, etc): ")
+    filetypes = ['.png', '.jpeg', '.jpg']
 
-    # rename_files(dir, filetype)
+    for type in filetypes:
+        rename_files(dir, type)
+
     # move_files(dir)
     extract_random_samples('negatives', 100)
 
