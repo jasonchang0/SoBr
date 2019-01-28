@@ -56,13 +56,13 @@ Try it out on [GitHub](https://github.com/jasonchang0/SoBr)
 
 Watch our [demo](https://www.youtube.com/watch?v=ReqAQ463QmY)
 
-Snapshots
-[Fig.1] (http://d.pr/i/mTuUeq)
-[Fig.2] (http://d.pr/i/S62gkz)
-[Fig.3] (http://d.pr/i/9YqeYT)
-[Fig.4] (http://d.pr/i/Way2j2)
-[Fig.5] (http://d.pr/i/kcssjt)
-[Fig.6] (http://d.pr/i/ZlaQEY)
+Snapshots </br>
+[Fig.1](http://d.pr/i/mTuUeq) </br>
+[Fig.2](http://d.pr/i/S62gkz) </br>
+[Fig.3](http://d.pr/i/9YqeYT) </br>
+[Fig.4](http://d.pr/i/Way2j2) </br>
+[Fig.5](http://d.pr/i/kcssjt) </br>
+[Fig.6](http://d.pr/i/ZlaQEY) </br>
 
 
 ## References
