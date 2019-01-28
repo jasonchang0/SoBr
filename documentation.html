@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="SoBr, Inc, LLC">
 
     <title> Sobr </title>
 
@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
 
-    <link rel="shortcut icon" type="image/x-icon" href="img/profile.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="img/profile.png" style="width:50px;height:100px;" >
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,7 +44,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="https://sobr-app.github.io/">SoBr</a>
+                <a class="navbar-brand" href="https://sobr-app.github.io/">Sobr</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -53,9 +53,7 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="#about">About</a>
-                    </li>
+                    <li> <a href="documentation.html">Documentation</a> </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -63,27 +61,169 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <!-- About Section -->
-    <section class="success" id="about">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-text">
+                        <span class="name">Sobr Documentation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Inspiration Section -->
+    <section id="inspiration">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <h2>About</h2>
-                        <hr class="star-light">
+                        <h2>What It Does</h2>
+                        <hr class="star-primary">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-lg-offset-2">
-                        <p>Write a paragraph about who you are, where you're from, etc.</p>
+                            <p>
+                                Sobr was inspired by the large amount of drunk driving accidents in the U.S. 
+                                In 2017, there were 10,874 deaths due to drunk driving. 
+                            </p>
+                        </div> 
+                        <div class="col-lg-4">
+                            <p>    
+                                Sobr aims to reduce this number by preventing intoxicated drivers from stepping behind the wheel.
+                            </p>
+                        </div>         
+                </div>
+            </div>
+        </section>
+
+
+    <!-- What It Does Section -->
+    <section id="whatitdoes">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Challenges We Ran Into</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p>
+                        Sobr is intended to be an accompanying application for drivers to identify whether or not they are intoxicated before driving. 
+                        It uses a combination of features detected through facial recognition to unlock the car, as long as the driver is classified as sober.                     
+                    </p>
+                </div>  
+                <div class="col-lg-4">
+                    <p>
+                        If the driver is classified as intoxicated, a second (different) face must be provided to act as a designated driver.
+                    </p>
+                </div>          
+            </div>
+        </div>
+    </section>
+
+
+    <!-- How We Built It Section -->
+    <section id="build">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2>How We Built It</h2>
+                        <hr class="star-primary">
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-2">
+                            <p>
+                                We began by scraping data off a dataset of pictures of human subjects before and after they had consumed alcohol.
+                            </p>
+                        </div> 
+
+                        <div class="col-lg-4">
+                            <p>
+                                It was rather difficult to find quality datasets of this nature, and so, we had to make do with a small initial sample.
+                            </p>
+                        </div>        
+                </div>
+            </div>
+        </section>
+
+    <!-- How We Built It Section -->
+    <section id="build">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Preprocessing Data</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                        <p>
+                                With small sample pool of images collected from 53 participants, we are asked to expand the datasets to avoid underfitting the data. 
+                                First, we train a Haar Cascade Classifier to detect and extract facial features from the images.
+                        </p>
+                    </div> 
+
                     <div class="col-lg-4">
-                        <p>Write a short paragraph about your hobbies and interests.</p>
+                        <p>
+                                From there, we turned to image augmentation for machine learning experiments, based on which we write a script to arbitrarily apply 0, 1, or 2 special effects to the original 212 images. 
+                                This technique of image augmentation allows us to generate a sample pool of 50,000, equally split between positive and negative samples.
+                        </p>
+                    </div>        
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenges Section -->
+    <section id="challenges">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Challenges We Ran Into</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p>
+                        Sobr identifies whether or not the driver of the car is intoxicated. 
+                     </p>
+                </div>  
+                <div class="col-lg-4">
+                    <p>Write a short paragraph about your hobbies and interests.</p>
+                </div>          
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Challenges Section -->
+    <section id="challenges">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2>Challenges We Ran Into</h2>
+                        <hr class="star-primary">
                     </div>
-                    <div class="col-lg-8 col-lg-offset-2 text-center">
-                        <!-- <a href="#" class="btn btn-lg btn-outline">
-                            <i class="fa fa-download"></i> Download Theme
-                        </a> -->
-                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-2">
+                        <p>
+                            When augmenting our dataset, we took a single image that contained four separate images and split the image into four separate images. 
+                            For each image, two of the images were classified as sober and two were classified as drunk. 
+                        </p>
+                    </div>  
+                    <div class="col-lg-4">
+                        <p>
+                            When doing this, two of the images were mixed, causing our data to be skewed when training our models. 
+                            The odd thing was that it performed better with the incorrectly labelled data.
+                        </p>
+                    </div>          
                 </div>
             </div>
         </section>
@@ -98,7 +238,7 @@
                     <div class="footer-col col-md-4">
                         <ul class="list-inline">
                             <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                                <a href="https://github.com/jasonchang0/SoBr" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -123,6 +263,7 @@
         </a>
     </div>
 
+ 
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
 
